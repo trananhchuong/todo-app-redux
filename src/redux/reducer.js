@@ -37,6 +37,14 @@ const rootReducer = (state = initState, action) => {
           status: action?.payload,
         },
       };
+    case TODO_LIST_FILTER_TYPE.SET_PRIORITY:
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          priority: action?.payload,
+        },
+      };
 
     default:
       return state;

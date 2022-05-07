@@ -6,8 +6,12 @@ export const getToDoListBySearchText = (state) => {
     const checkStatus =
       state?.filters?.status === "Completed" ? todo.completed : !todo.completed;
     const queryStatus = state?.filters?.status === "All" ? true : checkStatus;
+    const queryPriority =
+      state?.filters?.priority?.length > 0
+        ? state?.filters?.priority.includes(todo.priority)
+        : true;
 
-    return querySearchText && queryStatus;
+    return querySearchText && queryStatus && queryPriority;
   });
 };
 
