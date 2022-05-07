@@ -29,6 +29,14 @@ const rootReducer = (state = initState, action) => {
           search: action?.payload,
         },
       };
+    case TODO_LIST_FILTER_TYPE.SET_STATUS:
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          status: action?.payload,
+        },
+      };
 
     default:
       return state;
