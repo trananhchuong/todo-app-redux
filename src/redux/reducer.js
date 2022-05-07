@@ -45,6 +45,18 @@ const rootReducer = (state = initState, action) => {
           priority: action?.payload,
         },
       };
+    case TODO_LIST_TYPE.TOGGLE_STATUS:
+      const todoListNew = state.todoList.map((todo) => {
+        if (todo.id === action?.payload) {
+          return { ...todo, completed: !todo.completed };
+        }
+        return todo;
+      });
+
+      return {
+        ...state,
+        todoList: todoListNew,
+      };
 
     default:
       return state;

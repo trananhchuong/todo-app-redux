@@ -2,7 +2,7 @@ import { Button, Col, Input, Row, Select, Tag } from "antd";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { addTodo, TODO_LIST_TYPE } from "../../redux/actions";
+import { addTodo, setToggleStatus, TODO_LIST_TYPE } from "../../redux/actions";
 import { getToDoListBySearchText } from "../../redux/selectors";
 import Todo from "../Todo";
 
@@ -40,6 +40,10 @@ export default function TodoList() {
     setName(valueChange?.target?.value);
   };
 
+  const handleToggleStatus = (id) => {
+    dispatch(setToggleStatus(id));
+  };
+
   return (
     <Row style={{ height: "calc(100% - 40px)" }}>
       <Col span={24} style={{ height: "calc(100% - 40px)", overflowY: "auto" }}>
@@ -50,6 +54,7 @@ export default function TodoList() {
               prioriry={todo.priority}
               id={todo.id}
               completed={todo.completed}
+              handleToggleStatus={handleToggleStatus}
             />
           );
         })}

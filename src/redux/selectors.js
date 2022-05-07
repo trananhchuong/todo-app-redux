@@ -1,6 +1,9 @@
-export const getToDoList = (state) => state?.todoList;
+export const getToDoList = (state) => {
+  return state?.todoList
+};
 
 export const getToDoListBySearchText = (state) => {
+console.log("🚀 ~ file: selectors.js ~ line 6 ~ getToDoListBySearchText ~ state", state)
   return state?.todoList?.filter((todo) => {
     const querySearchText = todo.name.includes(state?.filters?.search);
     const checkStatus =
@@ -10,7 +13,6 @@ export const getToDoListBySearchText = (state) => {
       state?.filters?.priority?.length > 0
         ? state?.filters?.priority.includes(todo.priority)
         : true;
-
     return querySearchText && queryStatus && queryPriority;
   });
 };
