@@ -7,7 +7,7 @@ const priorityColorMapping = {
   Low: 'gray',
 };
 
-export default function Todo({ name, prioriry }) {
+export default function Todo({ name, prioriry, key }) {
   const [checked, setChecked] = useState(false);
 
   const toggleCheckbox = () => {
@@ -16,6 +16,7 @@ export default function Todo({ name, prioriry }) {
 
   return (
     <Row
+      key={key}
       justify='space-between'
       style={{
         marginBottom: 3,
